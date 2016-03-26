@@ -47,7 +47,7 @@ public class Knjiga {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((ISBN == null) ? 0 : ISBN.hashCode());
+		result = prime * result + (int) (ISBN ^ (ISBN >>> 32));
 		return result;
 	}
 	@Override
@@ -59,13 +59,11 @@ public class Knjiga {
 		if (getClass() != obj.getClass())
 			return false;
 		Knjiga other = (Knjiga) obj;
-		if (ISBN == null) {
-			if (other.ISBN != null)
-				return false;
-		} else if (!ISBN.equals(other.ISBN))
+		if (ISBN != other.ISBN)
 			return false;
 		return true;
 	}
+	
 	
 	
 }
